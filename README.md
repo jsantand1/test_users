@@ -1,6 +1,6 @@
 # Gestión de Usuarios - Flutter App
 
-Una aplicación móvil Flutter que implementa un sistema completo de gestión de usuarios con direcciones, utilizando **Riverpod** para el manejo de estado y siguiendo el patrón de arquitectura **MVVM**.
+Una aplicación móvil Flutter que implementa un sistema completo de gestión de usuarios con direcciones, utilizando **Riverpod** para el manejo de estado, **Atomic Design** para la arquitectura de componentes, y **internacionalización completa** en español e inglés.
 
 ## 🚀 Características
 
@@ -9,42 +9,72 @@ Una aplicación móvil Flutter que implementa un sistema completo de gestión de
 - ✅ **Formularios validados**: Validación en tiempo real de todos los campos
 - ✅ **Patrón MVVM**: Separación clara entre Vista, ViewModel y Modelo
 - ✅ **Riverpod**: Gestión de estado reactiva y eficiente
+- ✅ **Atomic Design**: Arquitectura de componentes reutilizables
+- ✅ **Internacionalización**: Soporte completo para español e inglés
 - ✅ **UI moderna**: Interfaz de usuario limpia y responsive
 - ✅ **Manejo de errores**: Control robusto de errores y estados de carga
 
 ## 📱 Pantallas Principales
 
-### 1. Lista de Usuarios
-- Visualización de todos los usuarios registrados
-- Búsqueda y filtrado
-- Acciones rápidas (editar, eliminar)
-- Estado vacío cuando no hay usuarios
+### 1. Splash Screen
+- Pantalla de bienvenida con animaciones
+- Logo animado con efectos de escala
+- Transición automática a la lista de usuarios
+- Textos localizados
 
-### 2. Formulario de Usuario
+### 2. Lista de Usuarios
+- Visualización de todos los usuarios registrados
+- Componente `UserListItem` reutilizable
+- Acciones rápidas (editar, eliminar)
+- Estado vacío con componente `EmptyState`
+- Indicadores de carga y manejo de errores
+
+### 3. Formulario de Usuario
 - Campos: Nombre, Apellido, Fecha de Nacimiento
-- Validación en tiempo real
+- Componentes `CustomInput` y `CustomButton`
+- Validación en tiempo real con mensajes localizados
 - Selector de fecha interactivo
 - Modo creación y edición
 
-### 3. Detalle de Usuario
-- Información completa del usuario
-- Lista de direcciones asociadas
+### 4. Detalle de Usuario
+- Información completa con `UserInfoCard`
+- Lista de direcciones con `AddressCard`
 - Gestión de direcciones (agregar, editar, eliminar)
 - Indicador de dirección principal
+- Estado vacío para direcciones
 
-### 4. Formulario de Dirección
-- Campos: País, Departamento, Municipio, Dirección, Info adicional
+### 5. Formulario de Dirección
+- Campos: País, Departamento, Municipio, Dirección
+- Componentes atómicos reutilizables
 - Opción de marcar como dirección principal
-- Validación completa de campos
+- Validación completa con mensajes localizados
 
 ## 🏗️ Arquitectura
 
-### Patrón MVVM
+### Patrón MVVM + Atomic Design
 ```
 ├── Models/          # Modelos de datos (User, Address)
 ├── ViewModels/      # Lógica de negocio y estado
 ├── Views/           # Pantallas y widgets de UI
-└── Providers/       # Configuración de Riverpod
+├── Components/      # Sistema de componentes atómicos
+```
+
+### Atomic Design System
+```
+shared/components/
+├── atoms/           # Componentes básicos
+│   ├── custom_button.dart
+│   ├── custom_card.dart
+│   └── custom_input.dart
+├── molecules/       # Combinación de átomos
+│   ├── info_row.dart
+│   └── empty_state.dart
+├── organisms/       # Componentes complejos
+│   ├── user_info_card.dart
+│   ├── address_card.dart
+│   └── user_list_item.dart
+└── templates/       # Layouts base
+    └── app_scaffold.dart
 ```
 
 ### Estructura del Proyecto
@@ -55,14 +85,21 @@ lib/
 │   └── address.dart        # Modelo de Dirección
 ├── viewmodels/
 │   ├── user_viewmodel.dart # ViewModel para gestión de usuarios
-│   └── form_viewmodel.dart # ViewModels para formularios
-├── ui/
-│   └── screens/
-│       ├── user_list_screen.dart      # Lista de usuarios
-│       ├── user_form_screen.dart      # Formulario de usuario
-│       ├── user_detail_screen.dart    # Detalle de usuario
-│       └── address_form_screen.dart   # Formulario de dirección
-└── main.dart               # Punto de entrada de la app
+│   ├── user_form_viewmodel.dart
+│   └── address_form_viewmodel.dart
+├── shared/
+│   ├── components/         # Sistema de componentes atómicos
+│   └── models/            # Modelos específicos de componentes
+├── ui/screens/
+│   ├── splash_screen.dart
+│   ├── user_list_screen.dart
+│   ├── user_form_screen.dart
+│   ├── user_detail_screen.dart
+│   └── address_form_screen.dart
+├── l10n/                  # Archivos de localización
+│   ├── app_en.arb        # Textos en inglés
+│   └── app_es.arb        # Textos en español
+└── main.dart             # Punto de entrada
 ```
 
 ## 🛠️ Tecnologías Utilizadas
@@ -70,6 +107,8 @@ lib/
 - **Flutter**: Framework de desarrollo móvil
 - **Riverpod**: Gestión de estado reactiva
 - **Material Design 3**: Sistema de diseño moderno
+- **Atomic Design**: Metodología de componentes
+- **Flutter Localizations**: Internacionalización
 - **Dart**: Lenguaje de programación
 
 ## 📦 Dependencias
@@ -78,8 +117,19 @@ lib/
 dependencies:
   flutter:
     sdk: flutter
-  flutter_riverpod: ^2.4.9  # Gestión de estado
-  cupertino_icons: ^1.0.8   # Iconos iOS
+  flutter_riverpod: ^2.4.9     # Gestión de estado
+  flutter_localizations:       # Internacionalización
+    sdk: flutter
+  intl: any                    # Formateo de fechas y números
+  cupertino_icons: ^1.0.8      # Iconos iOS
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0       # Análisis de código
+
+flutter:
+  generate: true              # Generación automática de localizaciones
 ```
 
 ## 🚀 Instalación y Ejecución
@@ -102,6 +152,8 @@ dependencies:
    ```bash
    flutter pub get
    ```
+   
+   > **Nota**: Los archivos de localización se generan automáticamente con `flutter pub get`
 
 3. **Ejecutar la aplicación**
    ```bash
@@ -132,16 +184,32 @@ dependencies:
 - **StateNotifier**: Para manejar estados complejos
 - **Provider**: Para datos inmutables
 - **Family Provider**: Para parámetros dinámicos
+- **ConsumerWidget**: Para widgets reactivos
+
+### Sistema de Componentes (Atomic Design)
+- **Átomos**: `CustomButton`, `CustomCard`, `CustomInput`
+- **Moléculas**: `InfoRow`, `EmptyState`
+- **Organismos**: `UserInfoCard`, `AddressCard`, `UserListItem`
+- **Templates**: `AppScaffold`
+- **Reutilización**: Componentes consistentes en toda la app
+
+### Internacionalización
+- **Soporte multiidioma**: Español e inglés
+- **Archivos ARB**: Configuración estándar de Flutter
+- **Generación automática**: Clases de localización generadas
+- **Textos dinámicos**: Soporte para parámetros en mensajes
 
 ### Validaciones
 - Validación en tiempo real de formularios
 - Campos requeridos claramente marcados
-- Mensajes de error descriptivos
+- Mensajes de error localizados
+- Validación de fechas y campos obligatorios
 
 ### Manejo de Errores
-- Estados de carga visual
-- Mensajes de error contextuales
+- Estados de carga visual con `LinearProgressIndicator`
+- Mensajes de error contextuales y localizados
 - Recuperación automática de errores
+- Estados vacíos con componente `EmptyState`
 
 ## 🔄 Estados de la Aplicación
 
@@ -159,9 +227,12 @@ dependencies:
 ## 🎨 Diseño UI/UX
 
 - **Material Design 3**: Componentes modernos y accesibles
+- **Atomic Design**: Sistema de componentes consistente
 - **Responsive**: Adaptable a diferentes tamaños de pantalla
 - **Navegación intuitiva**: Flujo lógico entre pantallas
-- **Feedback visual**: Indicadores de carga y estados
+- **Feedback visual**: Indicadores de carga, animaciones y estados
+- **Estados vacíos**: Componentes dedicados para listas vacías
+- **Internacionalización**: Interfaz completamente localizada
 - **Accesibilidad**: Etiquetas y navegación por teclado
 
 ## 🧪 Testing
@@ -170,15 +241,6 @@ Para ejecutar las pruebas:
 ```bash
 flutter test
 ```
-
-## 📝 Próximas Mejoras
-
-- [ ] Persistencia local con SQLite
-- [ ] Búsqueda y filtrado avanzado
-- [ ] Exportación de datos
-- [ ] Sincronización con backend
-- [ ] Modo oscuro
-- [ ] Internacionalización
 
 ## 🤝 Contribución
 
