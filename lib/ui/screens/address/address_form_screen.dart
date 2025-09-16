@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test_users/l10n/app_localizations.dart';
-import '../../viewmodels/address_form_viewmodel.dart';
-import '../../viewmodels/user_viewmodel.dart';
-import '../../models/address.dart';
-import '../../shared/components/templates/app_scaffold.dart';
-import '../../shared/components/atoms/custom_input.dart';
-import '../../shared/components/atoms/custom_button.dart';
+import '../../../viewmodels/address_form_viewmodel.dart';
+import '../../../viewmodels/user_viewmodel.dart';
+import '../../../models/address.dart';
+import '../../../shared/components/templates/app_scaffold.dart';
+import '../../../shared/components/atoms/custom_input.dart';
+import '../../../shared/components/atoms/custom_button.dart';
 
 class AddressFormScreen extends ConsumerStatefulWidget {
   static const String addressFormRoute = '/address-form';

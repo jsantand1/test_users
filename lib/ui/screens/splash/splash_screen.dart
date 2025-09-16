@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_users/l10n/app_localizations.dart';
-import '../../../ui/screens/user_list_screen.dart';
+import '../user/user_list_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String splashScreenRoute = '/splash';

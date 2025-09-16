@@ -32,18 +32,20 @@ class User {
   }
 
   String get fullName => '$firstName $lastName';
-  
+
   int get age {
     final now = DateTime.now();
     int age = now.year - birthDate.year;
-    if (now.month < birthDate.month || 
+    if (now.month < birthDate.month ||
         (now.month == birthDate.month && now.day < birthDate.day)) {
       age--;
     }
     return age;
   }
-  
-  String get initials => '${firstName.isNotEmpty ? firstName[0] : ''}${lastName.isNotEmpty ? lastName[0] : ''}'.toUpperCase();
+
+  String get initials =>
+      '${firstName.isNotEmpty ? firstName[0] : ''}${lastName.isNotEmpty ? lastName[0] : ''}'
+          .toUpperCase();
 
   Address? get primaryAddress {
     try {
@@ -51,35 +53,6 @@ class User {
     } catch (e) {
       return addresses.isNotEmpty ? addresses.first : null;
     }
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'firstName': firstName,
-      'lastName': lastName,
-      'birthDate': birthDate.toIso8601String(),
-      'addresses': addresses.map((address) => address.toJson()).toList(),
-    };
-  }
-
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      id: json['id']?.toString() ?? '',
-      firstName: json['firstName']?.toString() ?? '',
-      lastName: json['lastName']?.toString() ?? '',
-      birthDate:
-          DateTime.tryParse(json['birthDate']?.toString() ?? '') ??
-          DateTime(1970),
-      addresses:
-          (json['addresses'] as List<dynamic>?)
-              ?.map(
-                (addressJson) =>
-                    Address.fromJson(addressJson as Map<String, dynamic>),
-              )
-              .toList() ??
-          [],
-    );
   }
 
   @override

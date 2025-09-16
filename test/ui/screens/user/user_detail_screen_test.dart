@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:test_users/ui/screens/user_detail_screen.dart';
+import 'package:test_users/ui/screens/user/user_detail_screen.dart';
 import 'package:test_users/models/user.dart';
 import 'package:test_users/models/address.dart';
 import 'package:test_users/viewmodels/user_viewmodel.dart';

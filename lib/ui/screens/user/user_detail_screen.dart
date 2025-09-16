@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test_users/l10n/app_localizations.dart';
-import '../../viewmodels/user_viewmodel.dart';
-import '../../models/user.dart';
-import '../../models/address.dart';
-import '../../shared/components/templates/app_scaffold.dart';
-import '../../shared/components/organisms/user_info_card.dart';
-import '../../shared/components/organisms/address_card.dart';
-import '../../shared/components/molecules/empty_state.dart';
-import '../../shared/models/user_info_data.dart';
-import '../../shared/models/info_row_data.dart';
-import '../../shared/models/address_card_data.dart';
-import '../../shared/models/empty_state_data.dart';
-import 'address_form_screen.dart';
+import '../../../viewmodels/user_viewmodel.dart';
+import '../../../models/user.dart';
+import '../../../models/address.dart';
+import '../../../shared/components/templates/app_scaffold.dart';
+import '../../../shared/components/organisms/user_info_card.dart';
+import '../../../shared/components/organisms/address_card.dart';
+import '../../../shared/components/molecules/empty_state.dart';
+import '../../../shared/models/user_info_data.dart';
+import '../../../shared/models/info_row_data.dart';
+import '../../../shared/models/address_card_data.dart';
+import '../../../shared/models/empty_state_data.dart';
+import '../address/address_form_screen.dart';
 import 'user_form_screen.dart';
 
 class UserDetailScreen extends ConsumerStatefulWidget {

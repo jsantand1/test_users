@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test_users/l10n/app_localizations.dart';
-import '../../viewmodels/user_viewmodel.dart';
-import '../../models/user.dart';
-import '../../shared/components/templates/app_scaffold.dart';
-import '../../shared/components/molecules/empty_state.dart';
-import '../../shared/components/organisms/user_list_item.dart';
-import '../../shared/models/empty_state_data.dart';
-import '../../shared/models/user_list_item_data.dart';
+import '../../../viewmodels/user_viewmodel.dart';
+import '../../../models/user.dart';
+import '../../../shared/components/templates/app_scaffold.dart';
+import '../../../shared/components/molecules/empty_state.dart';
+import '../../../shared/components/organisms/user_list_item.dart';
+import '../../../shared/models/empty_state_data.dart';
+import '../../../shared/models/user_list_item_data.dart';
 import 'user_form_screen.dart';
 import 'user_detail_screen.dart';
 

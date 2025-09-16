@@ -37,30 +37,7 @@ class Address {
     );
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'country': country,
-      'department': department,
-      'municipality': municipality,
-      'streetAddress': streetAddress,
-      'additionalInfo': additionalInfo,
-      'isPrimary': isPrimary,
-    };
-  }
-
-  factory Address.fromJson(Map<String, dynamic> json) {
-    return Address(
-      id: json['id'] as String,
-      country: json['country'] as String,
-      department: json['department'] as String,
-      municipality: json['municipality'] as String,
-      streetAddress: json['streetAddress'] as String,
-      additionalInfo: json['additionalInfo'] as String?,
-      isPrimary: json['isPrimary'] as bool? ?? false,
-    );
-  }
-
+  
   @override
   String toString() {
     return 'Address(id: $id, country: $country, department: $department, municipality: $municipality, streetAddress: $streetAddress, additionalInfo: $additionalInfo, isPrimary: $isPrimary)';

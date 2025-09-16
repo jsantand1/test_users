@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:test_users/l10n/app_localizations.dart';
-import 'package:test_users/ui/screens/address_form_screen.dart';
+import 'package:test_users/ui/screens/address/address_form_screen.dart';
 import 'package:test_users/models/address.dart';
 import 'package:test_users/models/user.dart';
 import 'package:test_users/viewmodels/user_viewmodel.dart';

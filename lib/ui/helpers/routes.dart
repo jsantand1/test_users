@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../screens/user_list_screen.dart';
-import '../screens/user_form_screen.dart';
-import '../screens/user_detail_screen.dart';
-import '../screens/address_form_screen.dart';
-import '../screens/splash_screen.dart';
+import '../screens/user/user_list_screen.dart';
+import '../screens/user/user_form_screen.dart';
+import '../screens/user/user_detail_screen.dart';
+import '../screens/address/address_form_screen.dart';
+import '../screens/splash/splash_screen.dart';
 import '../../models/user.dart';
 import '../../models/address.dart';
 

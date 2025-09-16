@@ -13,6 +13,8 @@ Una aplicación móvil Flutter que implementa un sistema completo de gestión de
 - ✅ **Internacionalización**: Soporte completo para español e inglés
 - ✅ **UI moderna**: Interfaz de usuario limpia y responsive
 - ✅ **Manejo de errores**: Control robusto de errores y estados de carga
+- ✅ **Testing completo**: Pruebas unitarias para todos los componentes
+- ✅ **Organización modular**: Estructura de carpetas por características
 
 ## 📱 Pantallas Principales
 
@@ -78,25 +80,36 @@ shared/components/
 ```
 lib/
 ├── models/
-│   ├── user.dart           # Modelo de Usuario
-│   └── address.dart        # Modelo de Dirección
+│   ├── user.dart           # Modelo de Usuario (sin JSON serialization)
+│   └── address.dart        # Modelo de Dirección (sin JSON serialization)
 ├── viewmodels/
 │   ├── user_viewmodel.dart # ViewModel para gestión de usuarios
 │   ├── user_form_viewmodel.dart
 │   └── address_form_viewmodel.dart
+├── states/
+│   ├── user_list_state.dart      # Estado para lista de usuarios
+│   ├── user_form_state.dart      # Estado para formulario de usuario
+│   └── address_form_state.dart   # Estado para formulario de dirección
 ├── shared/
 │   ├── components/         # Sistema de componentes atómicos
 │   └── models/            # Modelos específicos de componentes
-├── ui/screens/
-│   ├── splash_screen.dart
-│   ├── user_list_screen.dart
-│   ├── user_form_screen.dart
-│   ├── user_detail_screen.dart
-│   └── address_form_screen.dart
+├── ui/
+│   ├── helpers/
+│   │   └── routes.dart    # Configuración de rutas
+│   └── screens/
+│       ├── splash/
+│       │   └── splash_screen.dart
+│       ├── user/
+│       │   ├── user_list_screen.dart
+│       │   ├── user_form_screen.dart
+│       │   └── user_detail_screen.dart
+│       └── address/
+│           └── address_form_screen.dart
 ├── l10n/                  # Archivos de localización
 │   ├── app_en.arb        # Textos en inglés
-│   └── app_es.arb        # Textos en español
-└── main.dart             # Punto de entrada
+│   ├── app_es.arb        # Textos en español
+│   └── app_localizations.dart # Clases generadas automáticamente
+└── main.dart             # Punto de entrada con internacionalización
 ```
 
 ## 🛠️ Tecnologías Utilizadas
@@ -234,9 +247,46 @@ flutter:
 
 ## 🧪 Testing
 
-Para ejecutar las pruebas:
+La aplicación incluye pruebas unitarias completas para todos los componentes:
+
+### Estructura de Pruebas
+```
+test/
+├── models/
+│   ├── user_test.dart           # Pruebas del modelo User
+│   └── address_test.dart        # Pruebas del modelo Address
+├── states/
+│   ├── user_list_state_test.dart
+│   ├── user_form_state_test.dart
+│   └── address_form_state_test.dart
+├── viewmodels/
+│   ├── user_viewmodel_test.dart
+│   ├── user_form_viewmodel_test.dart
+│   └── address_form_viewmodel_test.dart
+└── ui/screens/
+    ├── splash/
+    │   └── splash_screen_test.dart
+    └── user/
+        └── user_list_screen_test.dart
+```
+
+### Tipos de Pruebas Incluidas
+- **Modelos**: Pruebas de propiedades calculadas, copyWith, validaciones
+- **Estados**: Pruebas de inmutabilidad y integridad de datos
+- **ViewModels**: Pruebas con mocks y providers de Riverpod
+- **UI**: Pruebas de widgets con localización y navegación
+
+### Ejecutar Pruebas
 ```bash
+# Ejecutar todas las pruebas
 flutter test
+
+# Ejecutar pruebas específicas
+flutter test test/models/
+flutter test test/ui/screens/
+
+# Ejecutar con cobertura
+flutter test --coverage
 ```
 
 

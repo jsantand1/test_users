@@ -3,8 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:test_users/l10n/app_localizations.dart';
-import 'package:test_users/ui/screens/splash_screen.dart';
-import 'package:test_users/ui/screens/user_list_screen.dart';
+import 'package:test_users/ui/screens/splash/splash_screen.dart';
+import 'package:test_users/ui/screens/user/user_list_screen.dart';
 import 'package:test_users/viewmodels/user_viewmodel.dart';
 import 'package:test_users/states/user_list_state.dart';
 

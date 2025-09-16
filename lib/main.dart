@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:test_users/l10n/app_localizations.dart';
-import 'package:test_users/ui/screens/splash_screen.dart';
+import 'package:test_users/ui/screens/splash/splash_screen.dart';
 import 'ui/helpers/routes.dart';
 
 void main() {
