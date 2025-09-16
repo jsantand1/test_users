@@ -47,7 +47,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       
     default:
       return MaterialPageRoute(
-        builder: (_) => const UserListScreen(),
+        builder: (_) => const SplashScreen(),
         settings: settings,
       );
   }

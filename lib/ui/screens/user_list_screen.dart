@@ -69,12 +69,9 @@ class _UserListScreenState extends ConsumerState<UserListScreen> {
                 ],
               ),
             ),
-          
-          // Indicador de carga
-          if (userState.isLoading)
-            const LinearProgressIndicator(),
-          
-          // Lista de usuarios
+
+          if (userState.isLoading) const LinearProgressIndicator(),
+
           Expanded(
             child: userState.users.isEmpty
                 ? EmptyState(
@@ -96,8 +93,11 @@ class _UserListScreenState extends ConsumerState<UserListScreen> {
     );
   }
 
-
-  Widget _buildUserList(BuildContext context, List<User> users, UserViewModel userViewModel) {
+  Widget _buildUserList(
+    BuildContext context,
+    List<User> users,
+    UserViewModel userViewModel,
+  ) {
     return ListView.builder(
       padding: const EdgeInsets.all(8),
       itemCount: users.length,
@@ -108,7 +108,8 @@ class _UserListScreenState extends ConsumerState<UserListScreen> {
             id: user.id,
             fullName: user.fullName,
             initials: user.initials,
-            birthDate: '${_localizations!.birthDate}: ${_formatDate(user.birthDate)}',
+            birthDate:
+                '${_localizations!.birthDate}: ${_formatDate(user.birthDate)}',
             addressCount: user.addresses.length,
             editText: _localizations!.edit,
             deleteText: _localizations!.delete,
@@ -128,15 +129,19 @@ class _UserListScreenState extends ConsumerState<UserListScreen> {
   }
 
   void _navigateToUserForm(BuildContext context, {User? user}) async {
-    final result = await Navigator.of(context).pushNamed(
-      UserFormScreen.userFormRoute,
-      arguments: user,
-    );
-    
+    final result = await Navigator.of(
+      context,
+    ).pushNamed(UserFormScreen.userFormRoute, arguments: user);
+
     if (result == true && context.mounted) {
+      setState(() {});
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(user == null ? _localizations!.userCreatedSuccessfully : _localizations!.userUpdatedSuccessfully),
+          content: Text(
+            user == null
+                ? _localizations!.userCreatedSuccessfully
+                : _localizations!.userUpdatedSuccessfully,
+          ),
           backgroundColor: Colors.green,
         ),
       );
@@ -144,13 +149,16 @@ class _UserListScreenState extends ConsumerState<UserListScreen> {
   }
 
   void _navigateToUserDetail(BuildContext context, User user) {
-    Navigator.of(context).pushNamed(
-      UserDetailScreen.userDetailRoute,
-      arguments: user.id,
-    );
+    Navigator.of(
+      context,
+    ).pushNamed(UserDetailScreen.userDetailRoute, arguments: user.id);
   }
 
-  void _showDeleteConfirmation(BuildContext context, User user, UserViewModel userViewModel) {
+  void _showDeleteConfirmation(
+    BuildContext context,
+    User user,
+    UserViewModel userViewModel,
+  ) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(

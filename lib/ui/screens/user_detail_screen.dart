@@ -162,6 +162,7 @@ class _UserDetailScreenState extends ConsumerState<UserDetailScreen> {
     );
     
     if (result == true && context.mounted) {
+      setState(() {});
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(_localizations!.userUpdatedSuccessfully),

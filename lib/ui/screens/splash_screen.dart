@@ -22,7 +22,6 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    // Inicializar controladores de animación
     _fadeController = AnimationController(
       duration: const Duration(milliseconds: 1500),
       vsync: this,
@@ -33,7 +32,6 @@ class _SplashScreenState extends State<SplashScreen>
       vsync: this,
     );
 
-    // Configurar animaciones
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _fadeController, curve: Curves.easeInOut),
     );
@@ -42,16 +40,15 @@ class _SplashScreenState extends State<SplashScreen>
       CurvedAnimation(parent: _scaleController, curve: Curves.elasticOut),
     );
 
-    // Iniciar animaciones
     _fadeController.forward();
     _scaleController.forward();
 
-    // Navegar después de 3 segundos
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        Navigator.of(
-          context,
-        ).pushReplacementNamed(UserListScreen.userListRoute);
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          UserListScreen.userListRoute,
+          (route) => false,
+        );
       }
     });
   }
