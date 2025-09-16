@@ -27,21 +27,11 @@ class User {
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
       birthDate: birthDate ?? this.birthDate,
-      addresses: addresses ?? this.addresses,
+      addresses: List<Address>.from(addresses ?? this.addresses),
     );
   }
 
   String get fullName => '$firstName $lastName';
-
-  int get age {
-    final now = DateTime.now();
-    int age = now.year - birthDate.year;
-    if (now.month < birthDate.month ||
-        (now.month == birthDate.month && now.day < birthDate.day)) {
-      age--;
-    }
-    return age;
-  }
 
   String get initials =>
       '${firstName.isNotEmpty ? firstName[0] : ''}${lastName.isNotEmpty ? lastName[0] : ''}'
@@ -63,9 +53,28 @@ class User {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    return other is User && other.id == id;
+    return other is User &&
+        other.id == id &&
+        other.firstName == firstName &&
+        other.lastName == lastName &&
+        other.birthDate == birthDate &&
+        _listEquals(other.addresses, addresses);
   }
 
   @override
-  int get hashCode => id.hashCode;
+  int get hashCode => Object.hash(
+    id,
+    firstName,
+    lastName,
+    birthDate,
+    Object.hashAll(addresses),
+  );
+
+  bool _listEquals(List<Address> a, List<Address> b) {
+    if (a.length != b.length) return false;
+    for (int i = 0; i < a.length; i++) {
+      if (a[i] != b[i]) return false;
+    }
+    return true;
+  }
 }

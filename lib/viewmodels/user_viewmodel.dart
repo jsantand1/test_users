@@ -163,7 +163,12 @@ final userViewModelProvider = StateNotifierProvider<UserViewModel, UserListState
   return UserViewModel();
 });
 
-final userByIdProvider = Provider.family<User?, String>((ref, userId) {
+final userByIdProvider = Provider.family<User?, String>((ref, String userId) {
   final userState = ref.watch(userViewModelProvider);
-  return userState.users.where((user) => user.id == userId).firstOrNull;
+   print("🔄 Rebuild userByIdProvider for id=$userId, total=${userState.users.length}");
+  try {
+    return userState.users.firstWhere((user) => user.id == userId);
+  } catch (_) {
+    return null;
+  }
 });

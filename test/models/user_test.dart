@@ -43,17 +43,6 @@ void main() {
       expect(testUser.initials, 'JP');
     });
 
-    test('should calculate age correctly', () {
-      final now = DateTime.now();
-      final expectedAge = now.year - testDate.year;
-      final adjustedAge = now.month < testDate.month || 
-          (now.month == testDate.month && now.day < testDate.day) 
-          ? expectedAge - 1 
-          : expectedAge;
-      
-      expect(testUser.age, adjustedAge);
-    });
-
     test('should handle empty addresses list', () {
       final userWithoutAddresses = User(
         id: 'user2',
@@ -74,19 +63,6 @@ void main() {
       expect(updatedUser.firstName, 'Carlos');
       expect(updatedUser.lastName, 'Pérez'); // unchanged
       expect(updatedUser.id, 'user1'); // unchanged
-    });
-
-    test('should handle edge case for age calculation on birthday', () {
-      final today = DateTime.now();
-      final birthdayToday = User(
-        id: 'user3',
-        firstName: 'Test',
-        lastName: 'User',
-        birthDate: DateTime(today.year - 25, today.month, today.day),
-        addresses: [],
-      );
-
-      expect(birthdayToday.age, 25);
     });
 
     test('should handle single character names for initials', () {

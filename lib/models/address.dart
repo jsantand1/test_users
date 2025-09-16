@@ -37,7 +37,6 @@ class Address {
     );
   }
 
-  
   @override
   String toString() {
     return 'Address(id: $id, country: $country, department: $department, municipality: $municipality, streetAddress: $streetAddress, additionalInfo: $additionalInfo, isPrimary: $isPrimary)';
@@ -46,9 +45,23 @@ class Address {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    return other is Address && other.id == id;
+    return other is Address &&
+        other.id == id &&
+        other.country == country &&
+        other.department == department &&
+        other.municipality == municipality &&
+        other.streetAddress == streetAddress &&
+        other.additionalInfo == additionalInfo &&
+        other.isPrimary == isPrimary;
   }
 
   @override
-  int get hashCode => id.hashCode;
+  int get hashCode =>
+      id.hashCode ^
+      country.hashCode ^
+      department.hashCode ^
+      municipality.hashCode ^
+      streetAddress.hashCode ^
+      (additionalInfo?.hashCode ?? 0) ^
+      isPrimary.hashCode;
 }

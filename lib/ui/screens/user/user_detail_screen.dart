@@ -39,7 +39,6 @@ class _UserDetailScreenState extends ConsumerState<UserDetailScreen> {
   Widget build(BuildContext context) {
     _localizations ??= AppLocalizations.of(context)!;
     final user = ref.watch(userByIdProvider(widget.userId));
-
     if (user == null) {
       return AppScaffold(
         title: _localizations!.userNotFound,
@@ -158,7 +157,6 @@ class _UserDetailScreenState extends ConsumerState<UserDetailScreen> {
     );
     
     if (result == true && context.mounted) {
-      setState(() {});
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(_localizations!.userUpdatedSuccessfully),
@@ -178,8 +176,6 @@ class _UserDetailScreenState extends ConsumerState<UserDetailScreen> {
     );
     
     if (result == true && context.mounted) {
-      setState(() {});
-      
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(address == null ? _localizations!.addressCreatedSuccessfully : _localizations!.addressUpdatedSuccessfully),
@@ -206,15 +202,17 @@ class _UserDetailScreenState extends ConsumerState<UserDetailScreen> {
             child: Text(_localizations!.cancel),
           ),
           TextButton(
-            onPressed: () {
+            onPressed: () async {
               Navigator.of(context).pop();
-              userViewModel.deleteUserAddress(userId, address.id);
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(_localizations!.addressDeleted),
-                  backgroundColor: Colors.green,
-                ),
-              );
+              await userViewModel.deleteUserAddress(userId, address.id);
+              if (context.mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(_localizations!.addressDeleted),
+                    backgroundColor: Colors.green,
+                  ),
+                );
+              }
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),
             child: Text(_localizations!.delete),
