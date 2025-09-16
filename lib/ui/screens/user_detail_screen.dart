@@ -80,13 +80,11 @@ class _UserDetailScreenState extends ConsumerState<UserDetailScreen> {
   UserInfoData _createUserInfoData(User user) {
     return UserInfoData(
       fullName: user.fullName,
-      email: user.email,
       initials: user.initials,
+      
       infoRows: [
         InfoRowData(label: _localizations!.firstName, value: user.firstName),
         InfoRowData(label: _localizations!.lastName, value: user.lastName),
-        InfoRowData(label: 'Email', value: user.email),
-        InfoRowData(label: 'Teléfono', value: user.phone),
       ],
     );
   }

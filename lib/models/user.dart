@@ -33,9 +33,15 @@ class User {
 
   String get fullName => '$firstName $lastName';
   
-  String get email => '${firstName.toLowerCase()}.${lastName.toLowerCase()}@example.com';
-  
-  String get phone => '+1234567890';
+  int get age {
+    final now = DateTime.now();
+    int age = now.year - birthDate.year;
+    if (now.month < birthDate.month || 
+        (now.month == birthDate.month && now.day < birthDate.day)) {
+      age--;
+    }
+    return age;
+  }
   
   String get initials => '${firstName.isNotEmpty ? firstName[0] : ''}${lastName.isNotEmpty ? lastName[0] : ''}'.toUpperCase();
 

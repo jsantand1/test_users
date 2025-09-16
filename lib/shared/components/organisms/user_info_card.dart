@@ -45,13 +45,6 @@ class UserInfoCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      data.email,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.grey.shade600,
-                      ),
-                    ),
                   ],
                 ),
               ),

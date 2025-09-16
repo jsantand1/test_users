@@ -23,7 +23,7 @@ class Address {
     String? department,
     String? municipality,
     String? streetAddress,
-    String? additionalInfo,
+    Object? additionalInfo = const Object(),
     bool? isPrimary,
   }) {
     return Address(
@@ -32,7 +32,7 @@ class Address {
       department: department ?? this.department,
       municipality: municipality ?? this.municipality,
       streetAddress: streetAddress ?? this.streetAddress,
-      additionalInfo: additionalInfo ?? this.additionalInfo,
+      additionalInfo: additionalInfo == const Object() ? this.additionalInfo : additionalInfo as String?,
       isPrimary: isPrimary ?? this.isPrimary,
     );
   }

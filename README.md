@@ -1,6 +1,6 @@
 # Gestión de Usuarios - Flutter App
 
-Una aplicación móvil Flutter que implementa un sistema completo de gestión de usuarios con direcciones, utilizando **Riverpod** para el manejo de estado, **Atomic Design** para la arquitectura de componentes, y **internacionalización completa** en español e inglés.
+Una aplicación móvil Flutter que implementa un sistema completo de gestión de usuarios con direcciones, utilizando **Riverpod** para el manejo de estado, **Atomic Design** para la arquitectura de componentes, e **internacionalización completa** en español e inglés.
 
 ## 🚀 Características
 
@@ -40,13 +40,10 @@ Una aplicación móvil Flutter que implementa un sistema completo de gestión de
 - Información completa con `UserInfoCard`
 - Lista de direcciones con `AddressCard`
 - Gestión de direcciones (agregar, editar, eliminar)
-- Indicador de dirección principal
 - Estado vacío para direcciones
 
 ### 5. Formulario de Dirección
 - Campos: País, Departamento, Municipio, Dirección
-- Componentes atómicos reutilizables
-- Opción de marcar como dirección principal
 - Validación completa con mensajes localizados
 
 ## 🏗️ Arquitectura
