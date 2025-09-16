@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../atoms/custom_card.dart';
 import '../../models/empty_state_data.dart';
 
-/// Molécula para mostrar estados vacíos
 class EmptyState extends StatelessWidget {
   final EmptyStateData data;
   final VoidCallback? onAction;

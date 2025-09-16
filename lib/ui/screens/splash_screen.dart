@@ -79,7 +79,6 @@ class _SplashScreenState extends State<SplashScreen>
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo animado
               AnimatedBuilder(
                 animation: _scaleAnimation,
                 builder: (context, child) {
@@ -93,7 +92,7 @@ class _SplashScreenState extends State<SplashScreen>
                         borderRadius: BorderRadius.circular(60),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
+                            color: Colors.black.withValues(alpha: 0.2),
                             blurRadius: 20,
                             offset: const Offset(0, 10),
                           ),
@@ -111,7 +110,6 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 30),
 
-              // Título animado
               FadeTransition(
                 opacity: _fadeAnimation,
                 child: Column(
@@ -139,7 +137,6 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 50),
 
-              // Indicador de carga animado
               FadeTransition(
                 opacity: _fadeAnimation,
                 child: const SizedBox(

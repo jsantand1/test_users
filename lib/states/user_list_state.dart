@@ -1,6 +1,5 @@
 import '../models/user.dart';
 
-// Estado para la lista de usuarios
 class UserListState {
   final List<User> users;
   final bool isLoading;

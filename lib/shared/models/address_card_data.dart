@@ -1,4 +1,3 @@
-/// Modelo específico para el componente AddressCard
 class AddressCardData {
   final String streetAddress;
   final String location;

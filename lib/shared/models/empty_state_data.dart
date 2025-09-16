@@ -1,4 +1,3 @@
-/// Modelo específico para el componente EmptyState
 class EmptyStateData {
   final String iconData;
   final String title;

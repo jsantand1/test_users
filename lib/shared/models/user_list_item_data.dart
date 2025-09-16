@@ -1,4 +1,3 @@
-/// Modelo específico para el componente UserListItem
 class UserListItemData {
   final String id;
   final String fullName;

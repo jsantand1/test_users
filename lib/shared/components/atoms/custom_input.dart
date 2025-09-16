@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Input personalizado reutilizable siguiendo atomic design
 class CustomInput extends StatelessWidget {
   final String? labelText;
   final String? hintText;

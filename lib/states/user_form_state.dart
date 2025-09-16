@@ -1,4 +1,3 @@
-// Estado para el formulario de usuario
 class UserFormState {
   final String firstName;
   final String lastName;

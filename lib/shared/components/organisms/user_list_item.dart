@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../atoms/custom_card.dart';
 import '../../models/user_list_item_data.dart';
 
-/// Organismo para mostrar un elemento de usuario en la lista
 class UserListItem extends StatelessWidget {
   final UserListItemData data;
   final String addressText;

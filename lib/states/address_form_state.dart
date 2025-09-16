@@ -1,4 +1,3 @@
-// Estado para el formulario de dirección
 class AddressFormState {
   final String country;
   final String department;

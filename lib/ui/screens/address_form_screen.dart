@@ -44,7 +44,6 @@ class _AddressFormScreenState extends ConsumerState<AddressFormScreen> {
       _additionalInfoController.text = widget.address!.additionalInfo ?? '';
       _isPrimary = widget.address!.isPrimary;
       
-      // Inicializar el ViewModel con los datos de la dirección
       WidgetsBinding.instance.addPostFrameCallback((_) {
         final formViewModel = ref.read(addressFormViewModelProvider.notifier);
         formViewModel.loadAddress(widget.address!);
@@ -78,7 +77,6 @@ class _AddressFormScreenState extends ConsumerState<AddressFormScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // Mostrar error si existe
               if (formState.error != null)
                 Container(
                   padding: const EdgeInsets.all(12),
@@ -102,7 +100,6 @@ class _AddressFormScreenState extends ConsumerState<AddressFormScreen> {
                   ),
                 ),
 
-              // Campo País
               CustomInput(
                 controller: _countryController,
                 labelText: _localizations!.country,
@@ -120,7 +117,6 @@ class _AddressFormScreenState extends ConsumerState<AddressFormScreen> {
               ),
               const SizedBox(height: 16),
 
-              // Campo Departamento
               CustomInput(
                 controller: _departmentController,
                 labelText: _localizations!.department,
@@ -138,7 +134,6 @@ class _AddressFormScreenState extends ConsumerState<AddressFormScreen> {
               ),
               const SizedBox(height: 16),
 
-              // Campo Municipio
               CustomInput(
                 controller: _municipalityController,
                 labelText: _localizations!.municipality,
@@ -156,7 +151,6 @@ class _AddressFormScreenState extends ConsumerState<AddressFormScreen> {
               ),
               const SizedBox(height: 16),
 
-              // Campo Dirección
               CustomInput(
                 controller: _streetAddressController,
                 labelText: _localizations!.address,
@@ -177,7 +171,6 @@ class _AddressFormScreenState extends ConsumerState<AddressFormScreen> {
 
               const SizedBox(height: 16),
 
-              // Botones de acción
               Row(
                 children: [
                   Expanded(
@@ -218,16 +211,14 @@ class _AddressFormScreenState extends ConsumerState<AddressFormScreen> {
       formViewModel.setLoading(true);
 
       if (widget.address == null) {
-        // Crear nueva dirección
         final newAddress = formViewModel.createAddress();
         await userViewModel.addAddressToUser(widget.userId, newAddress);
         
         if (context.mounted) {
           formViewModel.reset();
-          Navigator.of(context).pop(true); // Retorna true para indicar éxito
+          Navigator.of(context).pop(true);
         }
       } else {
-        // Actualizar dirección existente
         final updatedAddress = widget.address!.copyWith(
           country: _countryController.text.trim(),
           department: _departmentController.text.trim(),
@@ -241,7 +232,7 @@ class _AddressFormScreenState extends ConsumerState<AddressFormScreen> {
         await userViewModel.updateUserAddress(widget.userId, updatedAddress);
         
         if (context.mounted) {
-          Navigator.of(context).pop(true); // Retorna true para indicar éxito
+          Navigator.of(context).pop(true);
         }
       }
     } catch (e) {

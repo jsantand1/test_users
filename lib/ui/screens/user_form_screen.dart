@@ -33,7 +33,6 @@ class _UserFormScreenState extends ConsumerState<UserFormScreen> {
       _lastNameController.text = widget.user!.lastName;
       _selectedDate = widget.user!.birthDate;
 
-      // Inicializar el ViewModel con los datos del usuario
       WidgetsBinding.instance.addPostFrameCallback((_) {
         final formViewModel = ref.read(userFormViewModelProvider.notifier);
         formViewModel.updateFirstName(widget.user!.firstName);
@@ -65,7 +64,6 @@ class _UserFormScreenState extends ConsumerState<UserFormScreen> {
           key: _formKey,
           child: Column(
             children: [
-              // Campo Nombre
               CustomInput(
                 controller: _firstNameController,
                 labelText: _localizations.firstName,
@@ -82,7 +80,6 @@ class _UserFormScreenState extends ConsumerState<UserFormScreen> {
               ),
               const SizedBox(height: 16),
 
-              // Campo Apellido
               CustomInput(
                 controller: _lastNameController,
                 labelText: _localizations.lastName,
@@ -99,7 +96,6 @@ class _UserFormScreenState extends ConsumerState<UserFormScreen> {
               ),
               const SizedBox(height: 16),
 
-              // Campo Fecha de Nacimiento
               InkWell(
                 onTap: () => _selectDate(context, formViewModel),
                 child: InputDecorator(
@@ -132,7 +128,6 @@ class _UserFormScreenState extends ConsumerState<UserFormScreen> {
               ),
               const SizedBox(height: 24),
 
-              // Información adicional
               Card(
                 child: Padding(
                   padding: const EdgeInsets.all(16),
@@ -164,7 +159,6 @@ class _UserFormScreenState extends ConsumerState<UserFormScreen> {
               ),
               const SizedBox(height: 32),
 
-              // Botones de acción
               Row(
                 children: [
                   Expanded(
@@ -241,16 +235,14 @@ class _UserFormScreenState extends ConsumerState<UserFormScreen> {
       formViewModel.setLoading(true);
 
       if (widget.user == null) {
-        // Crear nuevo usuario
         final newUser = formViewModel.createUser();
         await userViewModel.addUser(newUser);
 
         if (context.mounted) {
           formViewModel.reset();
-          Navigator.of(context).pop(true); // Retorna true para indicar éxito
+          Navigator.of(context).pop(true);
         }
       } else {
-        // Actualizar usuario existente
         final updatedUser = widget.user!.copyWith(
           firstName: _firstNameController.text.trim(),
           lastName: _lastNameController.text.trim(),
@@ -259,7 +251,7 @@ class _UserFormScreenState extends ConsumerState<UserFormScreen> {
         await userViewModel.updateUser(updatedUser);
 
         if (context.mounted) {
-          Navigator.of(context).pop(true); // Retorna true para indicar éxito
+          Navigator.of(context).pop(true);
         }
       }
     } catch (e) {

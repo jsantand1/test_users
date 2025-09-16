@@ -1,6 +1,5 @@
 import 'info_row_data.dart';
 
-/// Modelo específico para el componente UserInfoCard
 class UserInfoData {
   final String fullName;
   final String initials;

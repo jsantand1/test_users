@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Template de scaffold general reutilizable
 class AppScaffold extends StatelessWidget {
   final String title;
   final Widget body;

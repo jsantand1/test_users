@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Molécula para mostrar una fila de información (label: value)
 class InfoRow extends StatelessWidget {
   final String label;
   final String value;

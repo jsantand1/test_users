@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/address.dart';
 import '../states/address_form_state.dart';
 
-// ViewModel para el formulario de dirección
 class AddressFormViewModel extends StateNotifier<AddressFormState> {
   AddressFormViewModel() : super(const AddressFormState());
 
@@ -87,7 +86,6 @@ class AddressFormViewModel extends StateNotifier<AddressFormState> {
   }
 }
 
-// Provider para el formulario de dirección
 final addressFormViewModelProvider = StateNotifierProvider<AddressFormViewModel, AddressFormState>((ref) {
   return AddressFormViewModel();
 });

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../atoms/custom_card.dart';
 import '../../models/address_card_data.dart';
 
-/// Organismo para mostrar información completa de una dirección
 class AddressCard extends StatelessWidget {
   final AddressCardData data;
   final String primaryText;

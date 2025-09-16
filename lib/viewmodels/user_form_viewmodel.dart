@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/user.dart';
 import '../states/user_form_state.dart';
 
-// ViewModel para el formulario de usuario
 class UserFormViewModel extends StateNotifier<UserFormState> {
   UserFormViewModel() : super(const UserFormState());
 
@@ -59,7 +58,6 @@ class UserFormViewModel extends StateNotifier<UserFormState> {
   }
 }
 
-// Provider para el formulario de usuario
 final userFormViewModelProvider = StateNotifierProvider<UserFormViewModel, UserFormState>((ref) {
   return UserFormViewModel();
 });

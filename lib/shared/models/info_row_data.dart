@@ -1,4 +1,3 @@
-/// Modelo para las filas de información
 class InfoRowData {
   final String label;
   final String value;

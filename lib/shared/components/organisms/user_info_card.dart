@@ -3,7 +3,6 @@ import '../atoms/custom_card.dart';
 import '../molecules/info_row.dart';
 import '../../models/user_info_data.dart';
 
-/// Organismo para mostrar información completa del usuario
 class UserInfoCard extends StatelessWidget {
   final UserInfoData data;
   final VoidCallback? onEdit;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Card personalizada reutilizable siguiendo atomic design
 class CustomCard extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry? padding;

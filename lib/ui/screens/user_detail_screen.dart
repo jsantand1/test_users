@@ -62,14 +62,12 @@ class _UserDetailScreenState extends ConsumerState<UserDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Información del usuario
             UserInfoCard(
               data: _createUserInfoData(user),
               onEdit: () => _navigateToEditUser(context, user),
             ),
             const SizedBox(height: 16),
             
-            // Sección de direcciones
             _buildAddressesSection(context, user),
           ],
         ),
@@ -180,7 +178,6 @@ class _UserDetailScreenState extends ConsumerState<UserDetailScreen> {
     );
     
     if (result == true && context.mounted) {
-      // Forzar rebuild del widget para mostrar los cambios
       setState(() {});
       
       ScaffoldMessenger.of(context).showSnackBar(
